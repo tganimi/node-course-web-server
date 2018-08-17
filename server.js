@@ -23,9 +23,9 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use((req, res, next) => {
+/*app.use((req, res, next) => {
     res.render('maintenance.hbs');
-});
+});*/
 
 app.use(express.static(__dirname + '/public'));
 
@@ -37,7 +37,7 @@ hbs.registerHelper('screamIt', (text) => {
     return text.toUpperCase();
 });
 
-app.get('/', (req, res) => {
+/*app.get('/', (req, res) => {
     res.send({
         name: 'Thiago',
         likes: [
@@ -45,9 +45,9 @@ app.get('/', (req, res) => {
             'Movies'
         ]
     });
-});
+});*/
 
-app.get('/home', (req, res) => {
+app.get('/', (req, res) => {
     res.render('home.hbs', {
         pageTitle: 'Home Page',
         welcomeMessage: 'Welcome to node.js',
@@ -59,6 +59,12 @@ app.get('/about', (req, res) => {
         pageTitle: 'About Page',
     });
 })
+
+app.get('/projects', (req, res) => {
+    res.render('projects.hbs', {
+        pageTitle: 'Projects'
+    });
+});
 
 app.get('/bad', (req, res) => {
     res.send({
